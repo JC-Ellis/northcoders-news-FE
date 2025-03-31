@@ -1,42 +1,122 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+.main {
   text-align: center;
+  max-width: 375px;
+  border: 1px solid;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.header {
+  font-size: 12px;
+  display: flex;
+  color: blue;
+  justify-content: center;
+  margin: 20px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.profile-image {
+  width: 65px;
 }
 
-.card {
-  padding: 2em;
+.logo-image {
+  width: 65px;
 }
 
-.read-the-docs {
-  color: #888;
+.category {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.cat-class img {
+  border-radius: 50px;
+  filter: sepia(80%);
+}
+
+.category select {
+  width: 250px;
+  margin: auto;
+}
+
+.footer {
+  font-size: 8px;
+  display: flex;
+  color: blue;
+  justify-content: center;
+}
+
+.footer-logo-image {
+  width: 10%;
+  height: auto;
+}
+
+.basket-image {
+  width: 20%;
+  height: auto;
+}
+
+.fancy-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px;
+}
+
+.fancy-container img {
+  display: flex;
+  justify-content: center;
+  width: 80px;
+}
+
+.cat-class {
+  display: flex;
+  font-size: 9px;
+  justify-content: space-evenly;
+}
+
+.fancy-box {
+  width: 120px;
+  border: 2px solid #8e3737;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  background-color: #e9e8e8;
+  font-weight: 500;
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.fancy-box img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.fancy-price {
+  font-weight: 600;
+  color: #ef545e;
+  font-size: 14px;
+}
+
+.fancy-item-box {
+  width: 240px;
+  border: 2px solid #8e3737;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  background-color: #e9e8e8;
+  font-weight: 500;
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.fancy-item-box img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
 }
