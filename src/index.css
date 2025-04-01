@@ -1,4 +1,11 @@
-html {
-  max-width: 1000px;
-  border: 1px solid color(srgb rgb(255, 0, 0) green blue);
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  background-color: #fdfdfd;
+  font-family: Arial, sans-serif;
+}
+
+#root {
+  height: 100%;
 }

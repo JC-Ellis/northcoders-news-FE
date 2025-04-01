@@ -1,20 +1,17 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { getArticles } from "../utils/api";
 import ArticleWrapper from "./ArticleWrapper";
-
-const api = axios.create({
-  baseURL: "https://be-nc-news-btqn.onrender.com/api",
-});
 
 export default function Home({ page, setPage }) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+
   useEffect(() => {
     setIsLoading(true);
     setIsError(false);
-    api
-      .get(`/articles?p=${page}`)
+
+    getArticles(page)
       .then(({ data }) => {
         setArticles(data.articles);
       })
