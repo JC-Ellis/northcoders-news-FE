@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getArticlesById } from "../utils/api";
 import CommentsWrapper from "./CommentsWrapper";
+import VoteCard from "./VoteCard";
 
 export default function ViewArticle() {
   const { article_id } = useParams();
@@ -59,11 +60,12 @@ export default function ViewArticle() {
           />
         </div>
         <p>{article.body}</p>
+        <VoteCard votes={article.votes} id={article.article_id} />
         <div>
           <div>
             <p>Topic: {article.topic}</p>
           </div>
-          <p className="fancy-price">By: {article.author}</p>
+          <p className="author-name">By: {article.author}</p>
         </div>
         <div>
           <CommentsWrapper

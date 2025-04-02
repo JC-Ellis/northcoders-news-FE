@@ -11,14 +11,14 @@ export default function ArticleCard({ article }) {
               className="article-image"
               src={article.article_img_url || "src/Images/fb2.jpg"}
               alt="Basket"
-              />
+            />
           </div>
-              <div>
-                <p>Topic: {article.topic}</p>
-              </div>
           <div>
+            <p>Topic: {article.topic}</p>
             <p className="fancy-price">By: {article.author}</p>
+            <p>Votes: {article.votes}</p>
           </div>
+          <div></div>
         </div>
       </div>
     </Link>

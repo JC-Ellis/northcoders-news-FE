@@ -7,7 +7,7 @@ import Home from "./components/Home.jsx";
 import Nav from "./components/Nav.jsx";
 import ViewArticle from "./components/ViewArticle.jsx";
 
-function App() {
+export default function App() {
   const [page, setPage] = useState(1);
   return (
     <>
@@ -24,5 +24,3 @@ function App() {
     </>
   );
 }
-
-export default App;
