@@ -8,7 +8,7 @@ export default function ArticleWrapper({ articles, page, setPage }) {
       setPage((currentPage) => currentPage + 1);
     }
   }
-  
+
   function handlePreviousPage() {
     if (page > 1) {
       setPage((currentPage) => currentPage - 1);

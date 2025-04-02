@@ -1,16 +1,50 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CollapseComments from "./CollapseComments";
+import { getCommentsByArticleId } from "../utils/api";
 
 export default function CommentsWrapper({
-  comments,
-  commentPage,
-  setCommentPage,
+  articleId,
   totalComments,
   isVisible,
-  toggleView
+  toggleView,
 }) {
   const totalPages = Math.ceil(totalComments / 10);
+  const [comments, setComments] = useState([]);
+  const [commentPage, setCommentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
+  useEffect(() => {
+    setIsLoading(true);
+    setIsError(false);
+    getCommentsByArticleId(articleId, commentPage)
+      .then(({ data }) => {
+        setComments(data.comments);
+      })
+      .catch((err) => {
+        setIsError(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [commentPage]);
+
+  if (isLoading) {
+    return (
+      <div>
+        <p>....Loading</p>
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <section className="error-box">
+        <img alt="Error IMG" src="src/Images/fb2.jpg"></img>
+        <p>Something went wrong</p>
+      </section>
+    );
+  }
 
   function handleNextPage() {
     if (commentPage < totalPages) {
@@ -23,7 +57,6 @@ export default function CommentsWrapper({
       setCommentPage((currentPage) => currentPage - 1);
     }
   }
-
 
   return (
     <div>

@@ -1,17 +1,15 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getArticlesById, getCommentsByArticleId } from "../utils/api";
-import CommentsWrapper from "./CommentsWrapper.jsx";
+import { getArticlesById } from "../utils/api";
+import CommentsWrapper from "./CommentsWrapper";
 
 export default function ViewArticle() {
   const { article_id } = useParams();
 
   const [article, setArticles] = useState(null);
-  const [comments, setComments] = useState([]);
-  const [commentPage, setCommentPage] = useState(1);
+  const [isVisible, setIsVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
 
   function toggleView() {
     setIsVisible((visible) => !visible);
@@ -31,21 +29,6 @@ export default function ViewArticle() {
         setIsLoading(false);
       });
   }, [article_id]);
-
-  useEffect(() => {
-    setIsLoading(true);
-    setIsError(false);
-    getCommentsByArticleId(article_id, commentPage)
-      .then(({ data }) => {
-        setComments(data.comments);
-      })
-      .catch((err) => {
-        setIsError(true);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }, [commentPage]);
 
   if (isLoading) {
     return (
@@ -84,10 +67,8 @@ export default function ViewArticle() {
         </div>
         <div>
           <CommentsWrapper
+            articleId={article_id}
             totalComments={article.comment_count}
-            comments={comments}
-            commentPage={commentPage}
-            setCommentPage={setCommentPage}
             isVisible={isVisible}
             toggleView={toggleView}
           />
