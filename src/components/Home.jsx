@@ -10,7 +10,6 @@ export default function Home({ page, setPage }) {
   useEffect(() => {
     setIsLoading(true);
     setIsError(false);
-
     getArticles(page)
       .then(({ data }) => {
         setArticles(data.articles);
