@@ -137,3 +137,10 @@ img {
   font-size: 20px;
   color: rgb(0, 47, 255);
 }
+
+.comment-box {
+  border: 2px solid #8e3737;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+}
