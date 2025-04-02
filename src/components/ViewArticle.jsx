@@ -1,20 +1,26 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getArticlesById } from "../utils/api";
+import CommentsWrapper from "./CommentsWrapper";
 
 export default function ViewArticle() {
   const { article_id } = useParams();
 
-  const [article, setItem] = useState(null);
+  const [article, setArticles] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+
+  function toggleView() {
+    setIsVisible((visible) => !visible);
+  }
 
   useEffect(() => {
     setIsLoading(true);
     setIsError(false);
     getArticlesById(article_id)
       .then(({ data }) => {
-        setItem(data.article);
+        setArticles(data.article);
       })
       .catch((err) => {
         setIsError(true);
@@ -44,20 +50,28 @@ export default function ViewArticle() {
   return (
     <div className="fancy-box">
       <div>
-            <p className="article-title">{article.title}</p>
+        <p className="article-title">{article.title}</p>
         <div>
           <img
             className="article-image"
             src={article.article_img_url || "src/Images/fb2.jpg"}
             alt="Basket"
-            />
+          />
         </div>
         <p>{article.body}</p>
         <div>
-            <div>
-              <p>Topic: {article.topic}</p>
-            </div>
+          <div>
+            <p>Topic: {article.topic}</p>
+          </div>
           <p className="fancy-price">By: {article.author}</p>
+        </div>
+        <div>
+          <CommentsWrapper
+            articleId={article_id}
+            totalComments={article.comment_count}
+            isVisible={isVisible}
+            toggleView={toggleView}
+          />
         </div>
       </div>
     </div>
