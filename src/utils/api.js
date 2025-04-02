@@ -9,13 +9,17 @@ export const getArticles = (page) => {
 };
 
 export const getArticlesById = (article_id) => {
-  return api.get(`articles/${article_id}`);
+  return api.get(`/articles/${article_id}`);
 };
 
 export const getCommentsByArticleId = (article_id, commentPage) => {
-  return api.get(`articles/${article_id}/comments?p=${commentPage}`);
+  return api.get(`/articles/${article_id}/comments?p=${commentPage}`);
 };
 
 export const patchVotesByArticleId = (article_id, vote) => {
-  return api.patch(`articles/${article_id}`, vote)
+  return api.patch(`/articles/${article_id}`, vote)
+}
+
+export const postCommentByArticleId = (article_id, comment) => {
+  return api.post(`/articles/${article_id}/comments`, comment)
 }

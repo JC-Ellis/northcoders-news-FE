@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import CollapseComments from "./CollapseComments";
+import { CollapseComments } from "./CollapseComments";
 import { getCommentsByArticleId } from "../utils/api";
 
 export default function CommentsWrapper({
@@ -60,7 +60,7 @@ export default function CommentsWrapper({
 
   return (
     <div>
-      <CollapseComments isVisible={isVisible} toggleView={toggleView}>
+      <CollapseComments isVisible={isVisible} toggleView={toggleView} totalComments={totalComments}>
         {comments.map((comment) => (
           <div className="comment-box" key={comment.comment_id}>
             <div>
