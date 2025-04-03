@@ -17,9 +17,13 @@ export const getCommentsByArticleId = (article_id, commentPage) => {
 };
 
 export const patchVotesByArticleId = (article_id, vote) => {
-  return api.patch(`/articles/${article_id}`, vote)
-}
+  return api.patch(`/articles/${article_id}`, vote);
+};
 
 export const postCommentByArticleId = (article_id, comment) => {
-  return api.post(`/articles/${article_id}/comments`, comment)
-}
+  return api.post(`/articles/${article_id}/comments`, comment);
+};
+
+export const deleteUsersComment = (commentId) => {
+  return api.delete(`comments/${commentId}`);
+};

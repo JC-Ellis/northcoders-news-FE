@@ -5,6 +5,7 @@ export default function Nav({ setPage }) {
     setPage(1);
   }
   return (
+    <nav>
     <Link to="/">
       <div className="cat-class">
         <div>
@@ -12,5 +13,6 @@ export default function Nav({ setPage }) {
         </div>
       </div>
     </Link>
+    </nav>
   );
 }

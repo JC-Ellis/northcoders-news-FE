@@ -62,7 +62,11 @@ export default function ViewArticle() {
           />
         </div>
         <p>{article.body}</p>
-        <CommentCard articleId={article_id} success={success} setSuccess={setSuccess}/>
+        <CommentCard
+          articleId={article_id}
+          success={success}
+          setSuccess={setSuccess}
+        />
         <VoteCard votes={article.votes} id={article.article_id} />
         <div>
           <div>
@@ -77,6 +81,7 @@ export default function ViewArticle() {
             isVisible={isVisible}
             toggleView={toggleView}
             success={success}
+            setSuccess={setSuccess}
           />
         </div>
       </div>

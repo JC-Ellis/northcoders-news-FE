@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { postCommentByArticleId } from "../utils/api";
 import { UserContext } from "../contexts/User";
 
@@ -6,15 +6,14 @@ export default function CommentCard({ articleId, success, setSuccess }) {
   const [newComment, setNewComment] = useState("");
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const user = useContext(UserContext);
 
-  const user = useContext(UserContext)
-  console.log(user)
   function handleChange(event) {
     setNewComment(event.target.value);
   }
 
   function handleSubmit(event) {
-    event.preventDefault(); 
+    event.preventDefault();
     setError(null);
     setSuccess(null);
     setIsLoading(true);
@@ -24,15 +23,26 @@ export default function CommentCard({ articleId, success, setSuccess }) {
     })
       .then(() => {
         setNewComment("");
-        setSuccess(`Thank you for your submission ${user}` );
+        setSuccess(`Thank you for your submission ${user}`);
       })
       .catch(() => {
-        setError(`Sorry ${user}, your comment was not submitted. Please try again`);
+        setError(
+          `Sorry ${user}, your comment was not submitted. Please try again`
+        );
       })
       .finally(() => {
         setIsLoading(false);
       });
   }
+
+  useEffect(() => {
+    if (success) {
+      const timer = setTimeout(() => {
+        setSuccess(null);
+      }, 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [success]);
 
   return (
     <form onSubmit={handleSubmit}>
