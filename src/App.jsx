@@ -6,11 +6,13 @@ import Footer from "./components/Footer.jsx";
 import Home from "./components/Home.jsx";
 import Nav from "./components/Nav.jsx";
 import ViewArticle from "./components/ViewArticle.jsx";
+import { UserProvider } from "./contexts/User.jsx";
 
 export default function App() {
   const [page, setPage] = useState(1);
   return (
     <>
+    <UserProvider>
       <main className="main">
         <Header />
         <h2>Welcome to NC News!</h2>
@@ -21,6 +23,7 @@ export default function App() {
         </Routes>
         <Footer />
       </main>
+    </UserProvider>
     </>
   );
 }

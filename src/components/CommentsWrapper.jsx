@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import CollapseComments from "./CollapseComments";
+import { CollapseComments } from "./CollapseComments";
 import { getCommentsByArticleId } from "../utils/api";
 
 export default function CommentsWrapper({
@@ -7,6 +7,7 @@ export default function CommentsWrapper({
   totalComments,
   isVisible,
   toggleView,
+  success
 }) {
   const totalPages = Math.ceil(totalComments / 10);
   const [comments, setComments] = useState([]);
@@ -27,7 +28,7 @@ export default function CommentsWrapper({
       .finally(() => {
         setIsLoading(false);
       });
-  }, [commentPage]);
+  }, [commentPage, success]);
 
   if (isLoading) {
     return (

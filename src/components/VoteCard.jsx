@@ -1,6 +1,7 @@
 import { patchVotesByArticleId } from "../utils/api";
 import { useState } from "react";
 
+
 export default function VoteCard({ votes, id }) {
   const [optimisticVotes, setOptimisticVotes] = useState(0);
   const [error, setError] = useState(null);
