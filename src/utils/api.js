@@ -4,8 +4,8 @@ const api = axios.create({
   baseURL: "https://be-nc-news-btqn.onrender.com/api",
 });
 
-export const getArticles = (page) => {
-  return api.get(`/articles?p=${page}`);
+export const getArticles = (page, topic) => {
+  return api.get(`/articles?p=${page}${topic}`);
 };
 
 export const getArticlesById = (article_id) => {
