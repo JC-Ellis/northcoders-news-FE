@@ -12,6 +12,7 @@ export default function ViewArticle() {
   const [isVisible, setIsVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [success, setSuccess] = useState(null);
 
   function toggleView() {
     setIsVisible((visible) => !visible);
@@ -61,7 +62,7 @@ export default function ViewArticle() {
           />
         </div>
         <p>{article.body}</p>
-        <CommentCard articleId={article_id}/>
+        <CommentCard articleId={article_id} success={success} setSuccess={setSuccess}/>
         <VoteCard votes={article.votes} id={article.article_id} />
         <div>
           <div>
@@ -75,6 +76,7 @@ export default function ViewArticle() {
             totalComments={article.comment_count}
             isVisible={isVisible}
             toggleView={toggleView}
+            success={success}
           />
         </div>
       </div>

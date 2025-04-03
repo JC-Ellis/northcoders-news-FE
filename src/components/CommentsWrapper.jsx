@@ -7,6 +7,7 @@ export default function CommentsWrapper({
   totalComments,
   isVisible,
   toggleView,
+  success
 }) {
   const totalPages = Math.ceil(totalComments / 10);
   const [comments, setComments] = useState([]);
@@ -27,7 +28,7 @@ export default function CommentsWrapper({
       .finally(() => {
         setIsLoading(false);
       });
-  }, [commentPage]);
+  }, [commentPage, success]);
 
   if (isLoading) {
     return (
@@ -60,7 +61,7 @@ export default function CommentsWrapper({
 
   return (
     <div>
-      <CollapseComments isVisible={isVisible} toggleView={toggleView} totalComments={totalComments}>
+      <CollapseComments isVisible={isVisible} toggleView={toggleView}>
         {comments.map((comment) => (
           <div className="comment-box" key={comment.comment_id}>
             <div>

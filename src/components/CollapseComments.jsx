@@ -1,9 +1,9 @@
 
-function CollapseComments({ children, isVisible, toggleView, totalComments }) {
+function CollapseComments({ children, isVisible, toggleView }) {
   return (
     <div>
       <button type="button" onClick={toggleView}>
-        {isVisible ? "Hide Comments" : `Show ${totalComments} Comments`}
+        {isVisible ? "Hide Comments" : `Show Comments`}
       </button>
       {isVisible ? children : null}
     </div>
