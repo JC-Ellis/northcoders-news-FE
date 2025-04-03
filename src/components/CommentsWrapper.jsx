@@ -1,19 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { CollapseComments } from "./CollapseComments";
 import { getCommentsByArticleId } from "../utils/api";
+import { UserContext } from "../contexts/User";
+import DeleteComment from "./DeleteComment";
 
 export default function CommentsWrapper({
   articleId,
   totalComments,
   isVisible,
   toggleView,
-  success
+  success,
+  setSuccess,
 }) {
   const totalPages = Math.ceil(totalComments / 10);
   const [comments, setComments] = useState([]);
   const [commentPage, setCommentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [deleteSuccess, setDeleteSuccess] = useState(null);
+  const user = useContext(UserContext);
 
   useEffect(() => {
     setIsLoading(true);
@@ -28,7 +33,16 @@ export default function CommentsWrapper({
       .finally(() => {
         setIsLoading(false);
       });
-  }, [commentPage, success]);
+  }, [commentPage, success, deleteSuccess]);
+
+  useEffect(() => {
+    if (deleteSuccess) {
+      const timer = setTimeout(() => {
+        setDeleteSuccess(null);
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [deleteSuccess]);
 
   if (isLoading) {
     return (
@@ -58,10 +72,10 @@ export default function CommentsWrapper({
       setCommentPage((currentPage) => currentPage - 1);
     }
   }
-
   return (
     <div>
       <CollapseComments isVisible={isVisible} toggleView={toggleView}>
+        {deleteSuccess ? <p id="error-message">{deleteSuccess}</p> : null}
         {comments.map((comment) => (
           <div className="comment-box" key={comment.comment_id}>
             <div>
@@ -72,9 +86,16 @@ export default function CommentsWrapper({
             </div>
             <div>
               <p className="fancy-price">By: {comment.author}</p>
+              {user === comment.author ? (
+                <DeleteComment
+                  commentId={comment.comment_id}
+                  setDeleteSuccess={setDeleteSuccess}
+                />
+              ) : null}
             </div>
           </div>
         ))}
+
         <div>
           <div>
             <button onClick={handlePreviousPage} disabled={commentPage === 1}>
