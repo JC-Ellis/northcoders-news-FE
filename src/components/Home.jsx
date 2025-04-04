@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getArticles } from "../utils/api";
 import ArticleWrapper from "./ArticleWrapper";
 import { useSearchParams } from "react-router-dom";
+import SortControls from "./SortControls";
 
 export default function Home({ page, setPage }) {
   const [articles, setArticles] = useState([]);
@@ -10,15 +11,14 @@ export default function Home({ page, setPage }) {
   
   const [searchParams, setSearchParams] = useSearchParams()
   const filterByTopic = searchParams.get("topic")
-  let topicParam = ""
-  if (filterByTopic) {
-    topicParam = `&topic=${filterByTopic}`
-  }
+  const topicParam = filterByTopic ? filterByTopic : "";
+  const sort_by = searchParams.get("sort_by");
+  const order = searchParams.get("order");
 
   useEffect(() => {
     setIsLoading(true);
     setIsError(false);
-    getArticles(page, topicParam)
+    getArticles(page, topicParam, sort_by, order)
       .then(({ data }) => {
         setArticles(data.articles);
       })
@@ -28,7 +28,7 @@ export default function Home({ page, setPage }) {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [page, topicParam]);
+  }, [page, topicParam, sort_by, order]);
 
   if (isLoading) {
     return (
@@ -49,6 +49,9 @@ export default function Home({ page, setPage }) {
 
   return (
     <>
+    <div>
+      <SortControls/>
+      </div>
       <div>
         <ArticleWrapper
           key={articles.article_id}

@@ -11,19 +11,17 @@ import { UserProvider } from "./contexts/User.jsx";
 export default function App() {
   const [page, setPage] = useState(1);
   return (
-    <>
     <UserProvider>
       <main className="main">
-        <Header />
-        <h2>Welcome to NC News!</h2>
+        <Header id="main-header" />
+        <h2 className="welcome-message">Welcome to NC News!</h2>
         <Nav setPage={setPage} />
         <Routes>
           <Route path="/" element={<Home page={page} setPage={setPage} />} />
           <Route path="/articles/:article_id" element={<ViewArticle />} />
         </Routes>
-        <Footer />
+        <Footer id="main-footer" />
       </main>
     </UserProvider>
-    </>
   );
 }

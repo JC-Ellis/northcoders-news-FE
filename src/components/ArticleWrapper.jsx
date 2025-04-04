@@ -16,26 +16,34 @@ export default function ArticleWrapper({ articles, page, setPage }) {
   }
 
   return (
-    <div>
-      <h2>Choose an article to find out more!</h2>
-      <div className="fancy-container">
+    <div className="article-wrapper">
+      <h2 className="section-title">Pick an article to find out more!</h2>
+      <div className="fancy-container article-list">
         {articles.map((article) => (
           <ArticleCard key={article.article_id} article={article} />
         ))}
       </div>
-      <div>
+      <div className="pagination-info">
         <p>
           Page {page} of {totalPages}
         </p>
       </div>
-      <div className="fancy-container">
+      <div className="pagination-controls fancy-container">
         <div>
-          <button onClick={handlePreviousPage} disabled={page === 1}>
+          <button
+            className="pagination-button"
+            onClick={handlePreviousPage}
+            disabled={page === 1}
+          >
             Previous Page
           </button>
         </div>
         <div>
-          <button onClick={handleNextPage} disabled={page === totalPages}>
+          <button
+            className="pagination-button"
+            onClick={handleNextPage}
+            disabled={page === totalPages}
+          >
             Next Page
           </button>
         </div>

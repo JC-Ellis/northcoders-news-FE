@@ -51,39 +51,39 @@ export default function ViewArticle() {
   }
 
   return (
-    <div className="fancy-box">
-      <div>
+    <div className="view-article">
+      <div className="article-header">
         <p className="article-title">{article.title}</p>
-        <div>
-          <img
-            className="article-image"
-            src={article.article_img_url || "src/Images/fb2.jpg"}
-            alt="Basket"
-          />
+      </div>
+      <div className="article-image-container">
+        <img
+          className="article-image"
+          src={article.article_img_url || "src/Images/fb2.jpg"}
+          alt={article.title || "Article image"}
+        />
+      </div>
+      <p className="article-body">{article.body}</p>
+      <CommentCard
+        articleId={article_id}
+        success={success}
+        setSuccess={setSuccess}
+      />
+      <VoteCard votes={article.votes} id={article.article_id} />
+      <div className="article-meta">
+        <div className="article-topic">
+          <p>Topic: {article.topic}</p>
         </div>
-        <p>{article.body}</p>
-        <CommentCard
+        <p className="author-name">By: {article.author}</p>
+      </div>
+      <div className="article-comments">
+        <CommentsWrapper
           articleId={article_id}
+          totalComments={article.comment_count}
+          isVisible={isVisible}
+          toggleView={toggleView}
           success={success}
           setSuccess={setSuccess}
         />
-        <VoteCard votes={article.votes} id={article.article_id} />
-        <div>
-          <div>
-            <p>Topic: {article.topic}</p>
-          </div>
-          <p className="author-name">By: {article.author}</p>
-        </div>
-        <div>
-          <CommentsWrapper
-            articleId={article_id}
-            totalComments={article.comment_count}
-            isVisible={isVisible}
-            toggleView={toggleView}
-            success={success}
-            setSuccess={setSuccess}
-          />
-        </div>
       </div>
     </div>
   );
