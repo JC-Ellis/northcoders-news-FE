@@ -29,22 +29,23 @@ The frontend integrates seamlessly with the RESTful backend I developed, which y
 
 ## Instructions for running project locally
 
-#### Link to Github repo for cloning locally
-https://github.com/JC-Ellis/northcoders-news-FE
 
+#### **Clone this repository:**
 
-#### Step 1
-Once the repo is cloned to a local machine, run the following in the terminal:
->`npm install`
+1. git clone: https://github.com/JC-Ellis/northcoders-news-FE
+
+2. cd be-nc-news
+
+3. Once the repo is cloned to a local machine, run the following in the terminal: `npm install`
 
 This will install all the necessary project dependencies, including Vite as a dev dependency.
 
 *N.B Ensure installed Vite version is v5.1.4 or above and React is v18.2.0 or above*
 
-#### Step 2
-To run the site locally, run the following in the terminal
->`npm run dev`
+4. To run the site locally, run the following in the terminal: `npm run dev`
 
-and then follow the link/url that is provided.
+5. and then follow the link/url that is provided.
 
 ## Thank you for visiting this project!
+
+This portfolio project was created as part of a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com/)
