@@ -44,8 +44,12 @@ export default function ViewArticle() {
   if (isError) {
     return (
       <section className="error-box">
-        <img alt="Error IMG" src="src/Images/fb2.jpg"></img>
-        <p>Something went wrong</p>
+        <img
+          className="error-img"
+          alt="Error illustration"
+          src="https://cdn.pixabay.com/photo/2016/04/24/13/24/error-1349562_1280.png"
+        />
+        <p className="error-text">We can't find the article you're looking for</p>
       </section>
     );
   }

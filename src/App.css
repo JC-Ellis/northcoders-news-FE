@@ -162,3 +162,29 @@ img {
 .form-field {
   width: 300px;
 }
+
+.error-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background: #f8d7da;
+  border: 1px solid #f5c2c7;
+  border-radius: 8px;
+  margin: 20px auto;
+  max-width: 400px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.error-img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.error-text {
+  font-size: 18px;
+  color: #842029;
+  text-align: center;
+}

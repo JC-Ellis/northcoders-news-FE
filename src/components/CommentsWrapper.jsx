@@ -10,7 +10,6 @@ export default function CommentsWrapper({
   isVisible,
   toggleView,
   success,
-  setSuccess,
 }) {
   const totalPages = Math.ceil(totalComments / 10);
   const [comments, setComments] = useState([]);
