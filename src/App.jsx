@@ -6,6 +6,7 @@ import Footer from "./components/Footer.jsx";
 import Home from "./components/Home.jsx";
 import Nav from "./components/Nav.jsx";
 import ViewArticle from "./components/ViewArticle.jsx";
+import PageNotFound from "./components/PageNotFound";
 import { UserProvider } from "./contexts/User.jsx";
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home page={page} setPage={setPage} />} />
           <Route path="/articles/:article_id" element={<ViewArticle />} />
+          <Route path="*" element={<PageNotFound />}/>
         </Routes>
         <Footer id="main-footer" />
       </main>

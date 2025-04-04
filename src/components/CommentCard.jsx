@@ -14,6 +14,10 @@ export default function CommentCard({ articleId, success, setSuccess }) {
 
   function handleSubmit(event) {
     event.preventDefault();
+    if (!newComment.trim()) {
+      setError(`Please provide a comment, ${user}.`);
+      return;
+    }
     setError(null);
     setSuccess(null);
     setIsLoading(true);
@@ -52,7 +56,6 @@ export default function CommentCard({ articleId, success, setSuccess }) {
         <input
           type="text"
           className="form-field"
-          required
           placeholder="Write your comment here (Max 200 char)"
           maxLength="200"
           onChange={handleChange}

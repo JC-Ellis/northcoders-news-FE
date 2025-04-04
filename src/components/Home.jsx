@@ -4,10 +4,12 @@ import ArticleWrapper from "./ArticleWrapper";
 import { useSearchParams } from "react-router-dom";
 import SortControls from "./SortControls";
 
+
 export default function Home({ page, setPage }) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   
   const [searchParams, setSearchParams] = useSearchParams()
   const filterByTopic = searchParams.get("topic")
@@ -23,7 +25,9 @@ export default function Home({ page, setPage }) {
         setArticles(data.articles);
       })
       .catch((err) => {
+        console.log(err)
         setIsError(true);
+        setErrorMessage(err.response?.data?.msg || "Something went wrong!");
       })
       .finally(() => {
         setIsLoading(false);
@@ -41,8 +45,12 @@ export default function Home({ page, setPage }) {
   if (isError) {
     return (
       <section className="error-box">
-        <p>Something went wrong!</p>
-        <img alt="Error IMG" src="src/images/fb2.jpg"></img>
+        <img
+          className="error-img"
+          alt="Error illustration"
+          src="https://cdn.pixabay.com/photo/2016/04/24/13/24/error-1349562_1280.png"
+        />
+        <p className="error-text">{errorMessage}</p>
       </section>
     );
   }
