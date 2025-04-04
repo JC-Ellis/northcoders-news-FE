@@ -54,7 +54,7 @@ export default function CommentsWrapper({
   if (isError) {
     return (
       <section className="error-box">
-        <img alt="Error IMG" src="src/Images/fb2.jpg"></img>
+        <img alt="Error IMG" src="https://cdn.pixabay.com/photo/2016/04/24/13/24/error-1349562_1280.png"></img>
         <p>Something went wrong</p>
       </section>
     );
