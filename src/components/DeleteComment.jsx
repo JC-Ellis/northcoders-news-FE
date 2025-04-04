@@ -26,9 +26,8 @@ export default function DeleteComment({ commentId, setDeleteSuccess }) {
   }
 
   return (
-    <div>
+    <div className="delete-comment">
       {error ? <p id="error-message">{error}</p> : null}
-
       <button
         className="delete-button"
         onClick={deleteHandler}

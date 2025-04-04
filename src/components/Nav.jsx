@@ -5,38 +5,32 @@ export default function Nav({ setPage }) {
     setPage(1);
   }
   return (
-    <nav>
-    <Link to="/">
-      <div className="cat-class">
-        <div>
-          <button onClick={handleHomeClick}>HOME</button>
-        </div>
+    <nav className="main-nav" id="main-nav">
+      <div className="nav-home">
+        <Link to="/" className="nav-link">
+          <button onClick={handleHomeClick} className="nav-button">
+            HOME
+          </button>
+        </Link>
       </div>
-    </Link>
-    <p>Choose a topic</p>
-    <div className="fancy-container">
-      <Link to="/?topic=cooking">
-      <div className="cat-class">
-        <div>
-          <button onClick={handleHomeClick}>Cooking</button>
-        </div>
+      <h3 className="nav-title">Choose a topic</h3>
+      <div className="nav-topics fancy-container">
+        <Link to="/?topic=cooking" className="nav-link">
+          <button onClick={handleHomeClick} className="nav-button">
+            Cooking
+          </button>
+        </Link>
+        <Link to="/?topic=coding" className="nav-link">
+          <button onClick={handleHomeClick} className="nav-button">
+            Coding
+          </button>
+        </Link>
+        <Link to="/?topic=football" className="nav-link">
+          <button onClick={handleHomeClick} className="nav-button">
+            Football
+          </button>
+        </Link>
       </div>
-      </Link>
-      <Link to="/?topic=coding">
-      <div className="cat-class">
-        <div>
-          <button onClick={handleHomeClick}>Coding</button>
-        </div>
-      </div>
-      </Link>
-      <Link to="/?topic=football">
-      <div className="cat-class">
-        <div>
-          <button onClick={handleHomeClick}>Football</button>
-        </div>
-      </div>
-      </Link>
-    </div>
     </nav>
   );
 }

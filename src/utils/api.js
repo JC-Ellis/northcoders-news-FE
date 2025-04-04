@@ -4,8 +4,18 @@ const api = axios.create({
   baseURL: "https://be-nc-news-btqn.onrender.com/api",
 });
 
-export const getArticles = (page, topic) => {
-  return api.get(`/articles?p=${page}${topic}`);
+export const getArticles = (page, topic, sort_by, order) => {
+  let url = `/articles?p=${page}`;
+  if (topic) {
+    url += `&topic=${topic}`;
+  }
+  if (sort_by) {
+    url += `&sort_by=${sort_by}`;
+  }
+  if (order) {
+    url += `&order=${order}`;
+  }
+  return api.get(url);
 };
 
 export const getArticlesById = (article_id) => {
